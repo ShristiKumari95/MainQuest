@@ -129,7 +129,10 @@ const STATE = {
   activityIndex: 0,
   theme: localStorage.getItem("mainquest-theme") || "dark",
   toastTimer: null,
-  coachBannerNotice: null
+  coachBannerNotice: null,
+  chatMessages: [
+    { sender: 'bot', text: "Hello! I am your AI Quest Coach. I analyze your skill gaps, active target, and career progress in real-time. What would you like to focus on today?" }
+  ]
 };
 
 /* ============ NAVIGATION & SCREEN MANAGEMENT ============ */
@@ -262,6 +265,42 @@ function showNodeModal(nodeIdx) {
     <p style="margin:8px 0;color:var(--text-muted);">Status: <b>${node.status.toUpperCase()}</b></p>
     <button class="btn primary full" style="margin-top:16px;" onclick="closeModal();">Close</button>
   `);
+}
+
+/* ============ CHATBOT ENGINE FOR QUEST COACH ============ */
+function sendChatMessage(text) {
+  if (!text || !text.trim()) return;
+
+  STATE.chatMessages.push({ sender: 'user', text: text.trim() });
+  renderAppView();
+
+  setTimeout(() => {
+    let reply = "I recommend focusing on your active quest tasks to boost your career readiness score.";
+    const lower = text.toLowerCase();
+
+    if (lower.includes("gap") || lower.includes("skill") || lower.includes("weak")) {
+      const mlScore = STATE.user ? (STATE.user.skills["Machine Learning"] || 25) : 25;
+      reply = `Based on your goal (${STATE.user ? STATE.user.goal : "AI/ML Engineer"}), your biggest skill gap is Machine Learning (${mlScore}%). You should complete the 'Supervised ML Model Training' quest next!`;
+    } else if (lower.includes("next") || lower.includes("do") || lower.includes("recommend")) {
+      const rec = ACTIVITIES[STATE.activityIndex] || ACTIVITIES[0];
+      reply = `Your optimal next move is "${rec.title}". ${rec.reason}`;
+    } else if (lower.includes("interview") || lower.includes("job") || lower.includes("ready")) {
+      reply = `Your overall Career Readiness is at ${STATE.user ? STATE.user.progress : 68}%. Reaching 80% unlocks direct recruiter referral badges!`;
+    } else {
+      reply = `Great query! As your Quest Coach, I advise breaking down ${STATE.user ? STATE.user.goal : 'your target goal'} into 15-minute daily coding quests. What specific topic would you like to master today?`;
+    }
+
+    STATE.chatMessages.push({ sender: 'bot', text: reply });
+    renderAppView();
+    scrollChatToBottom();
+  }, 400);
+}
+
+function scrollChatToBottom() {
+  const chatArea = document.getElementById("chat-messages-container");
+  if (chatArea) {
+    chatArea.scrollTop = chatArea.scrollHeight;
+  }
 }
 
 /* ============ ONBOARDING ENGINE ============ */
@@ -449,7 +488,7 @@ function renderAppView() {
     case "challenges": container.innerHTML = renderChallengesView(); break;
     case "portfolio": container.innerHTML = renderPortfolioView(); break;
     case "career": container.innerHTML = renderCareerReadinessView(); break;
-    case "coach": container.innerHTML = renderCoachView(); break;
+    case "coach": container.innerHTML = renderCoachView(); setTimeout(scrollChatToBottom, 50); break;
     case "profile": container.innerHTML = renderProfileView(); break;
     default: container.innerHTML = renderHomeView();
   }
@@ -654,18 +693,32 @@ function renderCareerReadinessView() {
     </div>`;
 }
 
+/* QUEST COACH VIEW WITH INTERACTIVE CHATBOT */
 function renderCoachView() {
   return `
     <h2>AI Quest Coach Companion</h2>
-    <div class="next-move-card" style="margin-top:20px;">
-      <div style="display:flex;gap:12px;align-items:center;margin-bottom:16px;">
-        <span style="font-size:2rem;">🤖</span>
-        <div>
-          <h4>Quest Coach Advice</h4>
-          <p style="font-size:0.8rem;color:var(--text-muted);">Real-time career gap analysis</p>
-        </div>
+    <p style="color:var(--text-muted);margin-bottom:16px;">Ask questions, analyze skill gaps, and get personalized career advice.</p>
+    
+    <div class="chat-card">
+      <div class="chat-messages-area" id="chat-messages-container">
+        ${STATE.chatMessages.map(msg => `
+          <div class="chat-msg-row ${msg.sender}">
+            <div class="chat-msg-avatar">${msg.sender === 'bot' ? '🤖' : STATE.user.name.charAt(0).toUpperCase()}</div>
+            <div class="chat-msg-bubble">${msg.text}</div>
+          </div>
+        `).join('')}
       </div>
-      <p style="font-size:0.9rem;line-height:1.6;">"Hello ${STATE.user.name}! Based on your target goal <b>${STATE.user.goal}</b>, your highest priority skill gap is <b>Machine Learning (${STATE.user.skills["Machine Learning"] || 25}%)</b>. I recommend completing <i>Supervised ML Model Training</i> next."</p>
+
+      <div class="chat-suggestions-strip">
+        <button class="suggestion-chip" data-ask-chip="What is my biggest skill gap?">What is my biggest skill gap?</button>
+        <button class="suggestion-chip" data-ask-chip="What quest should I do next?">What quest should I do next?</button>
+        <button class="suggestion-chip" data-ask-chip="How close am I to job interview readiness?">How close am I to job readiness?</button>
+      </div>
+
+      <div class="chat-input-row">
+        <input type="text" id="chat-input-field" placeholder="Ask your Quest Coach..." onkeydown="if(event.key==='Enter') { sendChatMessage(this.value); this.value=''; }">
+        <button class="btn primary" id="chat-send-btn">Send ➔</button>
+      </div>
     </div>`;
 }
 
@@ -681,7 +734,7 @@ function renderProfileView() {
 
 /* ============ CENTRALIZED EVENT DELEGATION SYSTEM ============ */
 document.addEventListener("click", e => {
-  const target = e.target.closest("button, a, [data-action], [data-nav], [data-act-id], [data-onb-val], [data-assess-ans], [data-quest-ans], [data-skill-name], [data-node-idx], .link-btn, .back-link");
+  const target = e.target.closest("button, a, [data-action], [data-nav], [data-act-id], [data-onb-val], [data-assess-ans], [data-quest-ans], [data-skill-name], [data-node-idx], [data-ask-chip], .link-btn, .back-link");
   
   if (e.target.id === "modal" && e.target === e.target) {
     closeModal();
@@ -693,6 +746,21 @@ document.addEventListener("click", e => {
   const id = target.id;
   const ds = target.dataset;
   const action = ds.action;
+
+  // CHATBOT INTERACTION
+  if (id === "chat-send-btn") {
+    const input = document.getElementById("chat-input-field");
+    if (input) {
+      sendChatMessage(input.value);
+      input.value = "";
+    }
+    return;
+  }
+
+  if (ds.askChip !== undefined) {
+    sendChatMessage(ds.askChip);
+    return;
+  }
 
   // LANDING / BACK ACTIONS
   if (action === "go-landing" || id === "signup-back-btn" || id === "login-back-btn") {
