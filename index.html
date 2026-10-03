@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MAINQUEST — Your Career is the Main Quest</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- LANDING PAGE -->
+<div id="screen-landing" class="screen">
+  <nav class="landing-nav">
+    <div class="nav-container">
+      <div class="logo-group" data-action="go-landing">
+        <span class="logo-icon">⚔️</span>
+        <span class="logo-text">MAINQUEST</span>
+        <span class="logo-badge">PROTOTYPE</span>
+      </div>
+      <div class="nav-actions">
+        <button class="btn-theme-toggle" id="landing-theme-toggle" title="Toggle Theme">🌙</button>
+        <button class="btn ghost sm" id="nav-btn-login">Sign In</button>
+        <button class="btn primary sm" id="nav-btn-signup">Get Started</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="hero-section">
+    <div class="hero-container">
+      <div class="hero-content">
+        <div class="hero-badge-pill">
+          <span class="sparkle">✨</span>
+          <span>Adaptive AI Career Navigation</span>
+        </div>
+        <h1 class="hero-title">Your career is the <br><span class="gradient-text">main quest.</span></h1>
+        <p class="hero-subtitle">Stop scrolling through endless courses. Start building verified proof. Turn passive learning into measurable career progress.</p>
+        
+        <div class="hero-buttons">
+          <button class="btn primary lg" id="hero-btn-start">
+            <span>Start Your Quest</span>
+            <span class="arrow">→</span>
+          </button>
+          <button class="btn secondary lg" id="hero-btn-demo">
+            <span>Explore Demo</span>
+            <span class="badge-mini">Instant</span>
+          </button>
+        </div>
+
+        <div class="hero-proof-strip">
+          <div class="proof-item">
+            <span class="proof-num">100%</span>
+            <span class="proof-label">Action-driven progress</span>
+          </div>
+          <div class="proof-divider"></div>
+          <div class="proof-item">
+            <span class="proof-num">AI Coach</span>
+            <span class="proof-label">Adapts to skill gaps</span>
+          </div>
+          <div class="proof-divider"></div>
+          <div class="proof-item">
+            <span class="proof-num">Proof of Work</span>
+            <span class="proof-label">Verified portfolio</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- INTERACTIVE HERO ANIMATION -->
+      <div class="hero-interactive-card" id="hero-interactive-card">
+        <div class="card-glow"></div>
+        <div class="hero-quest-widget">
+          <div class="widget-header">
+            <div class="widget-title-group">
+              <span class="widget-dot"></span>
+              <span class="widget-title">QUEST ENGINE ACTIVE</span>
+            </div>
+            <span class="widget-tag">AI/ML ENGINEER</span>
+          </div>
+
+          <div class="hero-quest-path">
+            <div class="hero-node complete">
+              <div class="node-circle"><span class="icon">📚</span></div>
+              <span class="node-name">LEARN</span>
+            </div>
+            <div class="hero-line active"></div>
+
+            <div class="hero-node complete">
+              <div class="node-circle"><span class="icon">⚡</span></div>
+              <span class="node-name">DO</span>
+            </div>
+            <div class="hero-line active"></div>
+
+            <div class="hero-node active pulsing">
+              <div class="node-circle"><span class="icon">🎯</span></div>
+              <span class="node-name">TRACK</span>
+            </div>
+            <div class="hero-line"></div>
+
+            <div class="hero-node">
+              <div class="node-circle"><span class="icon">🧠</span></div>
+              <span class="node-name">ADAPT</span>
+            </div>
+            <div class="hero-line"></div>
+
+            <div class="hero-node goal">
+              <div class="node-circle"><span class="icon">🏆</span></div>
+              <span class="node-name">CAREER</span>
+            </div>
+          </div>
+
+          <!-- PROGRESS RING TRANSFORM TARGET -->
+          <div class="hero-transform-box">
+            <div class="ring-wrapper">
+              <svg class="ring-svg" viewBox="0 0 100 100">
+                <circle class="ring-bg" cx="50" cy="50" r="42"></circle>
+                <circle class="ring-progress" cx="50" cy="50" r="42"></circle>
+              </svg>
+              <div class="ring-text">
+                <span class="ring-val">68%</span>
+                <span class="ring-sub">READY</span>
+              </div>
+            </div>
+            <div class="transform-info">
+              <span class="target-title">AI / ML ENGINEER</span>
+              <p class="target-desc">Next Gap: Machine Learning (+15 XP available)</p>
+              <div class="live-status">
+                <span class="pulse-green"></span>
+                <span>Recommendation adapted 2m ago</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHILOSOPHY: SCROLL vs ACTION -->
+  <section class="philosophy-section">
+    <div class="container">
+      <div class="section-header center">
+        <span class="section-tag">THE PARADIGM SHIFT</span>
+        <h2>From passive scrolling to <span class="gradient-text">meaningful action</span></h2>
+        <p class="section-lead">Most platforms reward watch time. MAINQUEST rewards execution.</p>
+      </div>
+
+      <div class="comparison-grid">
+        <div class="comparison-card passive">
+          <div class="card-badge">TRADITIONAL PLATFORMS</div>
+          <h3>Passive Consumption</h3>
+          <div class="metric-display">
+            <div class="metric-row">
+              <span>Videos Watched</span>
+              <span class="val danger">8 Videos</span>
+            </div>
+            <div class="metric-row">
+              <span>Retention Rate</span>
+              <span class="val danger">12%</span>
+            </div>
+            <div class="metric-row">
+              <span>Code Written</span>
+              <span class="val danger">0 Lines</span>
+            </div>
+          </div>
+          <p class="card-footer-note">Leaves you stuck in tutorial hell without practical confidence.</p>
+        </div>
+
+        <div class="transform-arrow-box">
+          <div class="arrow-circle">⚡</div>
+          <span class="transform-text">TRANSFORM</span>
+        </div>
+
+        <div class="comparison-card active-quest">
+          <div class="card-badge highlight">MAINQUEST APPROACH</div>
+          <h3>Meaningful Execution</h3>
+          <div class="action-preview-box">
+            <div class="action-header">
+              <span class="act-type">CODING QUEST</span>
+              <span class="act-xp">+10 XP</span>
+            </div>
+            <h4>Build a Python Data Function</h4>
+            <p>Write an intermediate lambda function to process customer metrics.</p>
+            <div class="skill-gain-pill">
+              <span>Python Skill: 80% → 85%</span>
+              <span class="check">✓ Gap Closed</span>
+            </div>
+          </div>
+          <p class="card-footer-note">Every quest produces real code, verified skills, and updated roadmap.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCT STORY SECTION -->
+  <section class="story-section">
+    <div class="container">
+      <div class="section-header center">
+        <span class="section-tag">HOW IT WORKS</span>
+        <h2>A continuous cycle of growth</h2>
+      </div>
+
+      <div class="story-flow-wrapper">
+        <div class="story-step">
+          <div class="step-num">01</div>
+          <h3>LEARN</h3>
+          <p>Bite-sized context tailored to your target career role.</p>
+        </div>
+        <div class="story-connector">→</div>
+        <div class="story-step">
+          <div class="step-num">02</div>
+          <h3>DO</h3>
+          <p>Solve targeted coding quests & real-world tasks.</p>
+        </div>
+        <div class="story-connector">→</div>
+        <div class="story-step">
+          <div class="step-num">03</div>
+          <h3>TRACK</h3>
+          <p>Live progress tracking across skill categories and gaps.</p>
+        </div>
+        <div class="story-connector">→</div>
+        <div class="story-step">
+          <div class="step-num">04</div>
+          <h3>ADAPT</h3>
+          <p>AI Coach dynamically recalculates your next best move.</p>
+        </div>
+        <div class="story-connector">→</div>
+        <div class="story-step highlight">
+          <div class="step-num">05</div>
+          <h3>PROGRESS</h3>
+          <p>Verified portfolio proof ready for job applications.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERACTIVE FEATURES PREVIEWS -->
+  <section class="features-section">
+    <div class="container">
+      <div class="section-header center">
+        <span class="section-tag">POWERFUL FEATURES</span>
+        <h2>Designed for relentless momentum</h2>
+      </div>
+
+      <div class="feature-previews-grid">
+        <div class="feature-card">
+          <div class="feature-header">
+            <span class="feat-icon">🗺️</span>
+            <h3>Personalized Quest Map</h3>
+          </div>
+          <p>A dynamic visual roadmap customized for your career end-goal.</p>
+          <div class="feature-mini-preview">
+            <div class="mini-map-path">
+              <div class="mini-node done">Python ✓</div>
+              <div class="mini-line active"></div>
+              <div class="mini-node current">Statistics ⚡</div>
+              <div class="mini-line"></div>
+              <div class="mini-node locked">ML 🔒</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-header">
+            <span class="feat-icon">🧠</span>
+            <h3>Adaptive Difficulty</h3>
+          </div>
+          <p>Quests automatically adjust difficulty based on your accuracy and speed.</p>
+          <div class="feature-mini-preview">
+            <div class="difficulty-pills">
+              <span class="pill-done">Easy ✓</span>
+              <span class="pill-done">Easy ✓</span>
+              <span class="pill-done">Medium ✓</span>
+              <span class="pill-next">→ Medium+ (AI Adapted)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-header">
+            <span class="feat-icon">📊</span>
+            <h3>Skill Gap Detection</h3>
+          </div>
+          <p>Instantly see which skills need reinforcement before moving forward.</p>
+          <div class="feature-mini-preview">
+            <div class="mini-skills">
+              <div class="mini-skill-row"><span>Python</span><b>85%</b></div>
+              <div class="mini-skill-row"><span>Statistics</span><b>45%</b></div>
+              <div class="mini-skill-row gap"><span>ML</span><b>25% (Priority Gap)</b></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-header">
+            <span class="feat-icon">🤖</span>
+            <h3>AI Quest Coach</h3>
+          </div>
+          <p>Instant clarity on what to learn next, why it matters, and how to apply it.</p>
+          <div class="feature-mini-preview">
+            <div class="mini-chat-bubble">
+              <span class="coach-avatar">🤖</span>
+              <p>"Focus on Machine Learning next to close your biggest career gap."</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LANDING CTA FOOTER -->
+  <footer class="landing-footer">
+    <div class="container center">
+      <h2>Ready to start your main quest?</h2>
+      <p class="footer-sub">Join thousands of engineers building real career momentum.</p>
+      <button class="btn primary lg" id="footer-btn-start">Start Your Quest Now →</button>
+      <p class="copyright">&copy; 2026 MAINQUEST. All rights reserved.</p>
+    </div>
+  </footer>
+</div>
+
+<!-- SIGNUP SCREEN -->
+<div id="screen-signup" class="screen" hidden>
+  <div class="auth-layout">
+    <div class="auth-card">
+      <div class="auth-top">
+        <button class="back-link" id="signup-back-btn">← Back to Home</button>
+        <button class="btn-theme-toggle" id="signup-theme-toggle">🌙</button>
+      </div>
+
+      <div class="auth-header">
+        <div class="logo-group">
+          <span class="logo-icon">⚔️</span>
+          <span class="logo-text">MAINQUEST</span>
+        </div>
+        <h2>Create Account</h2>
+        <p class="auth-subtitle">Begin your AI-powered career journey.</p>
+      </div>
+
+      <form id="signup-form">
+        <div class="form-group">
+          <label for="signup-name">Full Name</label>
+          <input id="signup-name" type="text" placeholder="Alex Chen" required>
+        </div>
+
+        <div class="form-group">
+          <label for="signup-email">Email Address</label>
+          <input id="signup-email" type="email" placeholder="alex@mainquest.ai" required>
+        </div>
+
+        <div class="form-group">
+          <label for="signup-password">Password</label>
+          <input id="signup-password" type="password" placeholder="At least 6 characters" required>
+        </div>
+
+        <div class="form-group">
+          <label for="signup-confirm">Confirm Password</label>
+          <input id="signup-confirm" type="password" placeholder="Re-enter password" required>
+        </div>
+
+        <button type="submit" class="btn primary full" id="btn-submit-signup">Create Account & Start</button>
+      </form>
+
+      <div class="auth-footer">
+        <p>Already have an account? <a id="link-to-login" class="link-btn">Log in</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- LOGIN SCREEN -->
+<div id="screen-login" class="screen" hidden>
+  <div class="auth-layout">
+    <div class="auth-card">
+      <div class="auth-top">
+        <button class="back-link" id="login-back-btn">← Back to Home</button>
+        <button class="btn-theme-toggle" id="login-theme-toggle">🌙</button>
+      </div>
+
+      <div class="auth-header">
+        <div class="logo-group">
+          <span class="logo-icon">⚔️</span>
+          <span class="logo-text">MAINQUEST</span>
+        </div>
+        <h2>Welcome Back</h2>
+        <p class="auth-subtitle">Continue your quest where you left off.</p>
+      </div>
+
+      <form id="login-form">
+        <div class="form-group">
+          <label for="login-email">Email Address</label>
+          <input id="login-email" type="email" placeholder="alex@mainquest.ai" required>
+        </div>
+
+        <div class="form-group">
+          <label for="login-password">Password</label>
+          <input id="login-password" type="password" placeholder="Your password" required>
+        </div>
+
+        <button type="submit" class="btn primary full" id="btn-submit-login">Sign In</button>
+      </form>
+
+      <div class="auth-divider"><span>OR</span></div>
+
+      <button type="button" class="btn secondary full" id="btn-login-demo">⚡ Continue as Demo User (Alex)</button>
+
+      <div class="auth-footer">
+        <p>Don't have an account? <a id="link-to-signup" class="link-btn">Create one now</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ONBOARDING SCREEN -->
+<div id="screen-onboarding" class="screen" hidden>
+  <div class="onboarding-layout">
+    <div class="onboarding-card">
+      <div class="onboarding-progress-header">
+        <div class="progress-bar-track">
+          <div class="progress-bar-fill" id="onboarding-progress-fill" style="width: 25%;"></div>
+        </div>
+        <span class="progress-step-text" id="onboarding-step-counter">Step 1 of 4</span>
+      </div>
+
+      <div id="onboarding-container" class="onboarding-dynamic-content"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ASSESSMENT SCREEN -->
+<div id="screen-assessment" class="screen" hidden>
+  <div class="assessment-layout">
+    <div class="assessment-card">
+      <div class="assessment-header">
+        <span class="assessment-badge">SKILL ASSESSMENT</span>
+        <div class="question-progress-bar">
+          <div class="bar-fill" id="assessment-bar-fill"></div>
+        </div>
+      </div>
+
+      <div id="assessment-container" class="assessment-dynamic-content"></div>
+    </div>
+  </div>
+</div>
+
+<!-- QUEST QUESTION SCREEN -->
+<div id="screen-quest" class="screen" hidden>
+  <div class="quest-execution-layout">
+    <div id="quest-container" class="quest-dynamic-card"></div>
+  </div>
+</div>
+
+<!-- MAIN APP DASHBOARD SCREEN -->
+<div id="screen-app" class="screen" hidden>
+  <div class="app-layout">
+    <!-- SIDEBAR NAVIGATION -->
+    <aside id="sidebar-nav" class="sidebar">
+      <div class="sidebar-top">
+        <div class="sidebar-logo" data-nav="home">
+          <span class="logo-icon">⚔️</span>
+          <span class="logo-title">MAINQUEST</span>
+        </div>
+      </div>
+
+      <div class="sidebar-user-mini">
+        <div class="avatar" id="nav-user-avatar">A</div>
+        <div class="user-meta">
+          <span class="user-name" id="nav-user-name">Alex Chen</span>
+          <span class="user-role" id="nav-user-goal">AI/ML Engineer</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-links">
+        <button class="nav-item active" data-nav="home">
+          <span class="nav-icon">🏠</span>
+          <span class="nav-text">Home Dashboard</span>
+        </button>
+
+        <button class="nav-item" data-nav="main">
+          <span class="nav-icon">⚔️</span>
+          <span class="nav-text">Main Quest</span>
+        </button>
+
+        <button class="nav-item" data-nav="map">
+          <span class="nav-icon">🗺️</span>
+          <span class="nav-text">Quest Map</span>
+        </button>
+
+        <button class="nav-item" data-nav="side">
+          <span class="nav-icon">🛡️</span>
+          <span class="nav-text">Side Quests</span>
+        </button>
+
+        <button class="nav-item" data-nav="progress">
+          <span class="nav-icon">📈</span>
+          <span class="nav-text">Progress</span>
+        </button>
+
+        <button class="nav-item" data-nav="challenges">
+          <span class="nav-icon">🔥</span>
+          <span class="nav-text">Challenges</span>
+        </button>
+
+        <button class="nav-item" data-nav="portfolio">
+          <span class="nav-icon">💼</span>
+          <span class="nav-text">Portfolio</span>
+        </button>
+
+        <button class="nav-item" data-nav="career">
+          <span class="nav-icon">🎯</span>
+          <span class="nav-text">Career</span>
+        </button>
+
+        <button class="nav-item" data-nav="coach">
+          <span class="nav-icon">🤖</span>
+          <span class="nav-text">Quest Coach</span>
+        </button>
+
+        <button class="nav-item" data-nav="profile">
+          <span class="nav-icon">👤</span>
+          <span class="nav-text">Profile</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <button class="btn ghost full sm" id="sidebar-theme-toggle">
+          <span class="theme-icon">🌙</span>
+          <span class="theme-label">Switch Theme</span>
+        </button>
+        <button class="btn ghost full sm danger-hover" id="sidebar-logout">
+          <span>🚪 Logout</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- MAIN VIEW AREA -->
+    <main id="view" class="main-view-container"></main>
+  </div>
+
+  <!-- MOBILE BOTTOM BAR -->
+  <div class="mobile-bottom-bar">
+    <button class="mobile-nav-item active" data-nav="home">🏠 Home</button>
+    <button class="mobile-nav-item" data-nav="main">⚔️ Quest</button>
+    <button class="mobile-nav-item" data-nav="map">🗺️ Map</button>
+    <button class="mobile-nav-item" data-nav="coach">🤖 Coach</button>
+    <button class="mobile-nav-item" data-nav="profile">👤 Profile</button>
+  </div>
+</div>
+
+<!-- MODAL SHEET CONTAINER -->
+<div id="modal" class="modal-overlay" hidden>
+  <div class="modal-dialog">
+    <button class="modal-close-btn" id="modal-close">×</button>
+    <div id="modal-content" class="modal-body"></div>
+  </div>
+</div>
+
+<!-- TOAST BANNER -->
+<div id="toast" class="toast-banner" hidden></div>
+
+<script src="script.js"></script>
+</body>
+</html>
